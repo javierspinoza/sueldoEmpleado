@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier spinoza!!</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+    <div id='app'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">  
+                    <h3>Datos del empleado</h3>
+                 
+                    <label>Nombre</label>
+                    <input type="text"class="col-md-12" class="form control"placeholder="ingrese su nombre" v-model="nombre">                
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="admi" v-model="cat">
+                        <label class="form-check-label" for="inlineRadio1">Administrativo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="pro" v-model="cat">
+                        <label class="form-check-label" for="inlineRadio2">Profesional</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="tec" v-model="cat">
+                        <label class="form-check-label" for="inlineRadio2">Técnico</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="ope" v-model="cat">
+                        <label class="form-check-label" for="inlineRadio2">Operario</label>
+                    </div> <br><br>
+                    <label>Cantidad horas/mes</label>
+                    <input type="number"class="col-md-12" class="form control"placeholder="ingrese cantidad" v-model="hMes">
+                    <label>Horas extras/mes</label>
+                    <input type="number"class="col-md-12" class="form control"placeholder="ingrese cantidad" v-model="extras">
+                    <label>años de servicio</label>
+                    <input type="number"class="col-md-12" class="form control"placeholder="ingrese cantidad" v-model="anios">
+                    
+                    <input type="button"value="Consultar"class="btn btn-success" v-on:click="procesar">  
+                </div>     
+
+                <div class="col-md-6 col-xs-12">
+                    <h3>Información</h3>  
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="bg-dark text-white">
+                                <td>Nombre</td>
+                                <td>Sueldo base</td>
+                                <td>Valor horas extras</td>
+                                <td>Valor por antiguedad</td>
+                                <td>Desc seguro social</td>
+                                <td>Desc jubilación</td>
+                                <td>Total a cobrar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="objeto in arrayDatos" v-bind:style="objeto.total>6000000?'color:red':'color:green'">
+                                <td v-text="objeto.nombre"></td>
+                                <td v-text="objeto.base"></td>
+                                <td v-text="objeto.extras"></td>
+                                <td v-text="objeto.anios"></td>
+                                <td v-text="objeto.desS"></td>
+                                <td v-text="objeto.desJ"></td>
+                                <td v-text="objeto.total"></td>
+                            </tr>
+              
+                        </tbody>
+
+                    </table>      
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+
+<script src="js/vue.js"></script> 
+<script src="js/main.js"></script> 
+</html>
